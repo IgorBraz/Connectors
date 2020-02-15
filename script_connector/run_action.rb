@@ -1,4 +1,4 @@
-class RunAction
+class RunAction < Action
     attr_reader :result
 
     def unitialized_parameters

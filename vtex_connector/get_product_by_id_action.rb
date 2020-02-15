@@ -1,6 +1,4 @@
-require 'rest_connector'
-
-class GetProductByIdAction
+class GetProductByIdAction < Action
 	attr_reader :result
 
 	def unitialized_parameters
