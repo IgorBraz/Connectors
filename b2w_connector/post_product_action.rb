@@ -2,9 +2,11 @@ class PostProductAction < Action
     attr_reader :result
     
     def unitialized_parameters
-		{
-			'product': nil
-		}
+		  {}
+    end
+
+    def uninitialized_inputs
+      { "product": nil }
     end
     
     def run
@@ -12,7 +14,7 @@ class PostProductAction < Action
         # @connector_parameters[:'x-api-key']
         # @connector_parameters[:'x-accountmanager-key']
         # @connector_parameters[:'content-type']
-        body = @action_parameters[:product]
+        body = @inputs["product"]
 
         rest_connector = RestConnector.new
 

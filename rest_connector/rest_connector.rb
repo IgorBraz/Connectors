@@ -22,22 +22,24 @@ class RestConnector
     def post(uri, headers, body)
         url = URI.parse(uri)
 
-        Net::HTTP.start(url.host, url.port, :use_ssl => url.scheme == 'https') do |http|
-            req = Net::HTTP::Post.new(url)
-            
-            if (headers)
-                headers.each do |key, value|
-                    req[key] = value
+        begin
+            Net::HTTP.start(url.host, url.port, :use_ssl => url.scheme == 'https') do |http|
+                request = Net::HTTP::Post.new(url)
+                
+                if (headers)
+                    headers.each do |key, value|
+                        request[key] = value
+                    end
                 end
+                
+                request.body = body.to_json
+                
+                response = http.request request
+                
+                response.body
             end
-            
-            req.body = body.to_json
-          
-            http.use_ssl = url.scheme == "https"
-            
-            response = http.request req
-            
-            response.body
-          end
+        rescue => exception
+            puts exception.message
+        end
     end
 end

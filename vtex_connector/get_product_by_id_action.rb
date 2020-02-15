@@ -32,6 +32,8 @@ class GetProductByIdAction < Action
 
 		headers = { 'x-vtex-api-appkey' => app_key, 'x-vtex-api-apptoken' => app_token }
 
-		@result = rest_connector.get endpoint, headers
+		rest_result = rest_connector.get endpoint, headers
+
+		@result = rest_result.to_json
 	end
 end
