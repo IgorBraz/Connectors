@@ -13,8 +13,9 @@ class PostProductAction < Action
         # @connector_parameters[:'x-user-email']
         # @connector_parameters[:'x-api-key']
         # @connector_parameters[:'x-accountmanager-key']
-        # @connector_parameters[:'content-type']
-        body = @inputs["product"]
+        # @connector_parameters[:'content-type']Accept
+        # @connector_parameters[:'Accept']
+        body = @inputs
 
         rest_connector = RestConnector.new
 

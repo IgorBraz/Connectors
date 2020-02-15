@@ -4,6 +4,7 @@ class B2wConnector
             'x-user-email': nil,
             'x-api-key': nil,
             'x-accountmanager-key': nil,
+            'accept': nil,
             'content-type': nil            
         }
     end
