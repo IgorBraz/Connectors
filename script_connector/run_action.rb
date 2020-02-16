@@ -34,4 +34,8 @@ class RunAction < Action
 
       @result = script_result.to_json
   end
+
+  def interrupt
+    raise StandardError.new 'Interrupted by the user.'
+  end
 end
